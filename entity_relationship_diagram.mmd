@@ -1,0 +1,52 @@
+---
+title: FLYING SAUCERS DATABASE 
+---
+erDiagram
+    TEA {
+        serial tea_id PK, UK "required"
+        string blend_name "required"
+        string tasting_notes
+        string date_of_purchase
+        string price
+        string origin
+        boolean caffeine "required"
+    }
+    RATING {
+    serial rating_id PK
+    string review_comments
+    string ranking "1-5"
+    }
+    USER {
+        serial user_id PK, UK "required"
+        string name "required"
+        string email "required"
+        string password "required"
+    }
+    COLLECTION {
+        serial collection_id PK
+        string collection_name "required"
+        string date_created
+    }
+    VARIETY {
+        string type PK, UK "required"
+        string brewing_temp_F
+        string brewing_temp_C
+        string brewing_time
+        string tsp_per_cup
+    }
+    SUPPLIER {
+        string supplier_id PK, UK "required"
+        string name UK "required"
+        string location 
+        string logo
+        string website
+    }
+    TEA || -- |{ SUPPLIER : "sold by"
+    USER || --|{ SUPPLIER : "purchases from"
+    USER || -- |{ COLLECTION: "creates"
+    RATING || -- o{ USER: "rates"
+    TEA || -- o{ RATING: "rated"
+    TEA || -- |{ USER: "sipped by"
+    TEA || -- |{ COLLECTION: "contained in" 
+    TEA || -- |{ VARIETY: "type of"    
+    COLLECTION }o -- o{ USER: "follows"

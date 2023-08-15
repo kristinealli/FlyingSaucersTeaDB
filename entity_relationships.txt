@@ -1,0 +1,35 @@
+TEA - SUPPLIER ("sold by"):
+    A tea is sold by one supplier.
+    One supplier can sell multiple teas.
+
+USER - SUPPLIER ("purchases from"):
+    A user purchases from multiple suppliers.
+    One supplier can have multiple users purchasing from them.
+
+USER - COLLECTION ("creates"):
+    A user creates multiple collections.
+    One collection is created by one user.
+
+RATING - USER ("rates"):
+    A rating is assigned by multiple users.
+    One user can assign multiple ratings.
+
+TEA - RATING ("rated"):
+    A tea can have zero or more ratings.
+    One rating is assigned to one tea.
+
+TEA - USER ("sipped by"):
+    A tea is sipped by multiple users.
+    One user can sip zero or more teas.
+
+TEA - COLLECTION ("contained in"):
+    A tea is contained in one collection.
+    One collection can contain multiple teas.
+
+TEA - VARIETY ("type of"):
+    A tea is a type of one variety.
+    One variety can be associated with multiple teas.
+    
+COLLECTION - USER ("follows"): 
+    A collection can have zero or more followers. 
+    One user can follow zero or more collections. 
