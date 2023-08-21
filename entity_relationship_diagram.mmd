@@ -3,52 +3,52 @@ title: FLYING SAUCERS TEA
 ---
 erDiagram
     TEA {
-        serial tea_id PK
-        string blend_name "required"
-        string tasting_notes
-        string date_of_purchase
-        string price
-        string origin
-        boolean caffeine "required"
-        string supplier_id FK
-        string variety_type FK
-        string brewing_temp_F
-        string brewing_temp_C
-        string brewing_time
-        string tsp_per_cup
+        SERIAL tea_id PK
+        VARCHAR(100) blend_name "required"
+        VARCHAR(1000) tasting_notes
+        DATE DATE_of_purchase
+        PRICE price
+        VARCHAR(128) origin
+        BOOLEAN caffeine "required"
+        TINYINT supplier_id FK
+        TINYINT variety_type FK
+        DECIMAL(3) brewing_temp_F
+        DECIMAL(3) brewing_temp_C
+        TINYINT brewing_time_min
+        TINYINT tsp_per_cup
     }
     RATING {
-    serial rating_id PK
-    string review_comments
-    tinyint ranking "1-5"
-    string tea_id FK
-    string user_id FK
+    SERIAL rating_id PK
+    VARCHAR(1000) review_comments
+    TINYINT ranking "1-5"
+    TINYINT tea_id FK
+    TINYINT user_id FK
     }
     USER {
-        serial user_id PK
-        string name "required"
-        string email "required"
-        string password "required"
+        SERIAL user_id PK
+        VARCHAR(100) name "required"
+        VARCHAR(255) email "required"
+        VARCHAR(50) password "required"
     }
     COLLECTION {
-        serial collection_id PK
-        string collection_name "required"
-        string date_created
-        string user_id FK
+        SERIAL collection_id PK
+        VARCHAR(255) collection_name "required"
+        DATE DATE_created
+        TINYINT user_id FK
     }
     VARIETY {
-        string type PK
-        string standard_brewing_temp_F
-        string standard_brewing_temp_C
-        string standard_brewing_time
-        string standard_tsp_per_cup
+        VARCHAR(50) type PK
+        DECIMAL(3) standard_brewing_temp_F
+        DECIMAL(3) standard_brewing_temp_C
+        TINYINT standard_brewing_time
+        TINYINT standard_tsp_per_cup
     }
     SUPPLIER {
-        string supplier_id PK
-        string name UK "required"
-        string location 
-        string logo
-        string website
+        SERIAL supplier_id PK
+        VARCHAR(255) name UK "required"
+        VARCHAR(255) location 
+        VARCHAR(255) logo
+        VARCHAR(255) website
     }
     
     USER ||--|{ COLLECTION : "creates"
