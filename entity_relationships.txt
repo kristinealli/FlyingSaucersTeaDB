@@ -1,9 +1,9 @@
 TEA - SUPPLIER ("sold by"):
-    Each tea is sold by one supplier.
+    Each tea is sold by a specific supplier.
     One supplier can sell multiple teas.
 
 USER - SUPPLIER ("purchases from"):
-    A user purchases from multiple suppliers.
+    A user may purchase from multiple suppliers.
     One supplier can have multiple users purchasing from them.
 
 USER - COLLECTION ("creates"):
@@ -11,18 +11,13 @@ USER - COLLECTION ("creates"):
     Each collection is created by one user.
 
 RATING - USER ("rates"):
-    A rating is assigned by multiple users.
-    One user can assign multiple ratings.
+    A tea rating can be assigned by multiple users.
     Each user can only assign one rating to each tea.
 
 TEA - RATING ("rated"):
     A tea can have zero or more ratings.
     One rating is assigned to one tea.
     Each user can only rate each tea once.
-
-TEA - USER ("owned by"):
-    A tea can be owned by multiple users.
-    One user can own zero or more teas.
 
 TEA - COLLECTION ("contained in"):
     A tea is contained in a collection.

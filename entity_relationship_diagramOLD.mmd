@@ -1,28 +1,24 @@
 ---
-title: FLYING SAUCERS TEA 
+title: FLYING SAUCERS DATABASE 
 ---
 erDiagram
     TEA {
         serial tea_id PK
         string blend_name "required"
         string tasting_notes
-        string date_of_purchase
-        string price
+        date date_of_purchase
+        decimal price
         string origin
         boolean caffeine "required"
         string supplier_id FK
         string variety_type FK
-        string brewing_temp_F
-        string brewing_temp_C
-        string brewing_time
-        string tsp_per_cup
     }
     RATING {
     serial rating_id PK
     string review_comments
     tinyint ranking "1-5"
-    string tea_id FK
-    string user_id FK
+    serial tea_id FK
+    serial user_id FK
     }
     USER {
         serial user_id PK
@@ -33,29 +29,30 @@ erDiagram
     COLLECTION {
         serial collection_id PK
         string collection_name "required"
-        string date_created
-        string user_id FK
+        date date_created
+        serial user_id FK
     }
     VARIETY {
         string type PK
-        string standard_brewing_temp_F
-        string standard_brewing_temp_C
-        string standard_brewing_time
-        string standard_tsp_per_cup
+        decimal(5,2) brewing_temp_F
+        decimal(5,2) brewing_temp_C
+        tinyint brewing_time_minutes
+        tinyint tsp_per_cup
     }
     SUPPLIER {
         string supplier_id PK
-        string name UK "required"
+        string name UK "required" 
         string location 
         string logo
         string website
     }
-    
-    USER ||--|{ COLLECTION : "creates"
-    RATING ||--o{ USER : "written by"
-    TEA ||--o{ RATING : "rated"
-    TEA ||--|{ COLLECTION : "contained in"
-    TEA ||--o{ VARIETY : "type of"
-    COLLECTION }o--o{ USER : "follows"
     TEA ||--|{ SUPPLIER : "sold by"
     USER ||--o{ SUPPLIER : "purchases from"
+    USER ||--o{ COLLECTION : "creates"
+    RATING ||--o| USER : "written by"
+    TEA ||--o{ RATING : "belongs to"
+    TEA ||--o{ COLLECTION : "contained in"
+    TEA ||--o{ VARIETY : "type of"
+    COLLECTION ||--o{ USER : "follows"
+
+
